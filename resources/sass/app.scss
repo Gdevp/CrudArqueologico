@@ -1,0 +1,98 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+.navbar-nav .nav-link {
+  color: white;
+}
+
+.custom-card {
+  width: 300px;
+  height: auto;
+}
+
+
+.custom-card img {
+  align-items: center;
+  width: 600px;
+  height: 320px;
+}
+
+.card-body {
+  width: 610px;
+}
+
+.card-text {
+  text-align: left;
+}
+
+.btn-dobles {
+  margin-top: 40px;
+}
+
+.dropdown-menu {
+  background-color: rgb(31, 31, 49);
+}
+
+.dropdown-menu:hover {
+
+  background-color: rgb(255, 0, 0);
+}
+
+.dropdown-item:focus {
+  outline: none;
+}
+
+.dropdown-item {
+  padding-top: 5px;
+  text-align: center;
+}
+
+.dropdown-item:hover {
+  background-color: rgb(255, 0, 0);
+  /* reemplaza #tuColorAzulOscuro con el código de color que desees */
+  color: white;
+}
+
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 5px 5px 5px;
+  border-style: solid;
+  border-color: transparent transparent #1a1d25 transparent;
+  /* El tercer valor es el color de la flecha, que debería coincidir con el color de fondo de tu menú desplegable. */
+}
+
+.dropdown-menu {
+  border-radius: 5px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  /* ... cualquier otro estilo que desees agregar ... */
+}
+
+.nav-item,
+.nav-link,
+.dropdown-toggle {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-nav {
+  align-items: center;
+}
+
+.navbar {
+  background-color: #24242a;
+}
+
+.custom-logout-item {
+  padding-left: 5px;
+  padding-right: 5px;
+}

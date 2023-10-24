@@ -1,0 +1,4 @@
+.a-navbar-dark .navbar-nav .nav-link,
+.navbar-dark .navbar-brand {
+  color: rgb(235, 0, 0) !important;
+}

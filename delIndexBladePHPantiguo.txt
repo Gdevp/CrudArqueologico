@@ -1,0 +1,153 @@
+<!-- Mostrar lista de empleados en el HomePage-->
+@extends('layouts.app')
+@section('content')
+    <div class="container">
+        @if (Session::has('mensaje'))
+            <div class="alert alert-success alert-dismissible" role="alert">
+                {{ Session::get('mensaje') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+        <!-- Form -->
+        <a href="{{ url('lugar/create') }}" class="btn btn-success">Añadir nuevo Sitio</a>
+        <br><br>
+        <table class="table table-dark">
+            <thead class="thead-dark">
+                <tr>
+                    <td></td>
+                    <th>Foto</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach ($lugars as $lugar)
+                    <tr>
+                        <td>{{ $lugar->id }}</td>
+                        <td>
+                            <img class="img-thumbnail align-items-lg-center img-fluid"
+                                src="{{ asset('storage') . '/' . $lugar->foto }}" width="450" height="250">
+                        </td>
+                        <td>{{ $lugar->nombre }}</td>
+                        <td>{{ $lugar->descripcion }}</td>
+                        <td>
+                            <a href="{{ url('/lugar/' . $lugar->id . '/edit') }}" class="btn btn-warning">
+                                Editar
+                            </a>
+                            |
+                            <form action="{{ url('/lugar/' . $lugar->id) }}" method="POST" class="d-inline">
+                                @csrf
+                                {{ method_field('DELETE') }}
+                                <input class="btn btn-danger" type="submit"
+                                    onclick="return confirm('¿Desea Borrar esta información?')" value="Borrar">
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+        {!! $lugars->links() !!}
+    </div>
+@endsection
+============================================================================
+// segundo index.blade.php , que la imagen se ve completa en toda la casilla de fotos.
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
+        @if (Session::has('mensaje'))
+            <div class="alert alert-success alert-dismissible" role="alert">
+                {{ Session::get('mensaje') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+        <!-- Form -->
+        <a href="{{ url('lugar/create') }}" class="btn btn-success">Añadir nuevo Sitio</a>
+        <br><br>
+        <table class="table table-dark" border="1">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Foto</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach ($lugars as $lugar)
+                    <tr>
+                        <td>
+                            <img class="img-thumbnail align-items-lg-center img-fluid"
+                                src="{{ asset('storage') . '/' . $lugar->foto }}" width="100%" alt="Foto del lugar">
+                        </td>
+                        <td>{{ $lugar->nombre }}</td>
+                        <td>{{ $lugar->descripcion }}</td>
+                        <td>
+                            <a href="{{ url('/lugar/' . $lugar->id . '/edit') }}" class="btn btn-warning">
+                                Editar
+                            </a>
+                            |
+                            <form action="{{ url('/lugar/' . $lugar->id) }}" method="POST" class="d-inline">
+                                @csrf
+                                {{ method_field('DELETE') }}
+                                <input class="btn btn-danger" type="submit"
+                                    onclick="return confirm('¿Desea Borrar esta información?')" value="Borrar">
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+        {!! $lugars->links() !!}
+    </div>
+@endsection
+=================================================================================
+// MODELO TARJETAS
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
+        @if (Session::has('mensaje'))
+            <div class="alert alert-success alert-dismissible" role="alert">
+                {{ Session::get('mensaje') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+        <!-- Form -->
+        <a href="{{ url('lugar/create') }}" class="btn btn-success">Añadir nuevo Sitio</a>
+        <br><br>
+        <div class="row">
+            @foreach ($lugars as $lugar)
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img class="card-img-top" src="{{ asset('storage') . '/' . $lugar->foto }}" alt="Foto del Lugar">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $lugar->nombre }}</h5>
+                            <p class="card-text">{{ $lugar->descripcion }}</p>
+                            <a href="{{ url('/lugar/' . $lugar->id . '/edit') }}" class="btn btn-warning">
+                                Editar
+                            </a>
+                            <form action="{{ url('/lugar/' . $lugar->id) }}" method="POST" class="d-inline">
+                                @csrf
+                                {{ method_field('DELETE') }}
+                                <input class="btn btn-danger" type="submit"
+                                    onclick="return confirm('¿Desea Borrar esta información?')" value="Borrar">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        {!! $lugars->links() !!}
+    </div>
+@endsection
+==================================================================================================
